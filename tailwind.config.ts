@@ -14,13 +14,13 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       screens: {
-        sm: "576px",
+        phone: "576px",
         // => @media (min-width: 576px) { ... }
 
-        tablet: "960px",
+        tablet: { min: "577px", max: "1023px" },
         // => @media (min-width: 960px) { ... }
 
-        desktop: "1440px",
+        desktop: { min: "1024px", max: "1800px" },
         // => @media (min-width: 1440px) { ... }
       },
     },
