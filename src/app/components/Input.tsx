@@ -3,9 +3,11 @@
 import { FC } from "react";
 import shorten from "./images/bg-shorten-mobile.svg";
 import Image from "next/image";
-interface InputProps {}
+interface InputProps {
+  handler: any;
+}
 //
-const Input: FC<InputProps> = ({}) => {
+const Input: FC<InputProps> = ({ handler }) => {
   return (
     <div className="h-fit flex flex-col items-center">
       <div className="bg-indigo-950 rounded flex  relative w-10/12 ">
@@ -18,6 +20,7 @@ const Input: FC<InputProps> = ({}) => {
         />
         <div className="w-full h-44 p-8  flex flex-col items-center z-10 desktop:flex-row  desktop:p-4  ">
           <input
+            onChange={(e) => handler(e.target.value)}
             className="h-14 rounded w-80 px-4 mb-5 desktop:mb-0 desktop:w-10/12 desktop:mr-10"
             placeholder="Shorten a link here..."
             type="text"

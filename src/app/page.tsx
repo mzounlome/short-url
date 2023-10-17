@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
 import InfoBox from "./components/InfoBox";
@@ -10,13 +12,12 @@ async function shortenUrl(url: string) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        apikey: `${process.env.REBRANDLY_API_KEY}}`,
+        apikey: `${process.env.REBRANDLY_API_KEY}`,
       },
       body: JSON.stringify({
         destination: url,
       }),
     });
-
     const newUrl = await data.json();
     console.log("NEW URL", newUrl);
     return newUrl;
@@ -26,11 +27,18 @@ async function shortenUrl(url: string) {
 }
 
 export default async function Home() {
+  //create onChange handler
+  const [searchTerm, setSearcTerm] = useState("");
+
+  const shortUrl = shortenUrl(
+    "https://www.youtube.com/channel/UCHK4HD0ltu1-I212icLPt3g"
+  );
+  console.log(shortUrl);
   return (
     <main className=" min-h-fit overflow-auto">
       <Nav />
       <Body />
-      <Input />
+      <Input handler={setSearcTerm} />
       <InfoBox />
       <Footer />
     </main>
